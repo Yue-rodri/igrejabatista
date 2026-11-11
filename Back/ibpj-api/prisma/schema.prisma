@@ -1,0 +1,52 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+  // Removendo 'output' para forçar o local padrão, que é o correto
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelos do banco de dados
+
+model User {
+  id                Int      @id @default(autoincrement())
+  email             String   @unique
+  password          String
+  full_name         String?
+  data_nascimento   DateTime? @db.Date 
+  role              String   @default("member") 
+
+  show_in_aniversariantes Boolean @default(true)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Evento {
+  id                Int      @id @default(autoincrement())
+  titulo            String
+  descricao         String?
+  data              DateTime @db.Date 
+  hora              String 
+  tipo              String
+  local             String?  @default("Igreja IBPJ")
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Postagem {
+  id                Int      @id @default(autoincrement())
+  titulo            String
+  descricao         String
+  data              DateTime @db.Date
+  hora              String?
+  imagem_url        String?
+  destaque          Boolean  @default(false)
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

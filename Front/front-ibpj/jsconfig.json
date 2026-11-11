@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // O alias que o Shadcn e seu código usam
+      "@/*": [
+        "src/*"
+      ],
+      // Adicionando explicitamente o que o seu código usa, se necessário
+      "@entities/*": [
+        "src/entities/*"
+      ]
+    },
+    // Configurações para JSX e módulos
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

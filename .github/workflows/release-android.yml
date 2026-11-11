@@ -1,0 +1,73 @@
+name: Release APK Android & Deploy Landing Page
+
+on:
+  push:
+    branches:
+      - main
+      - feat/ibpj-mobile-android
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  publish-apk-release:
+    name: Publicar APK no GitHub Releases
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar Artefatos do APK
+        run: |
+          cp IBPJ-Mobile-v1.0.0-release.apk IBPJ-Mobile-release.apk
+          ls -lh IBPJ-Mobile-release.apk IBPJ-Mobile-v1.0.0-release.apk qrcode-ibpj-mobile.png qrcode-ibpj-mobile.svg
+
+      - name: Criar ou Atualizar Release Oficial (v1.0.0)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: "IBPJ Mobile v1.0.0 — Aplicativo Android Oficial"
+          body: |
+            ## 📱 IBPJ Mobile — Igreja Batista do Parque Jandaia (v1.0.0)
+            Aplicativo oficial Android com *Premium Glass Experience* integrado à API IBPJ.
+
+            ### 📥 Download Direto do APK
+            - **[Baixar IBPJ-Mobile-release.apk (Produção Assinado - 3,32 MB)](https://github.com/${{ github.repository }}/releases/latest/download/IBPJ-Mobile-release.apk)**
+            - **Requisitos**: Android 6.0 (Marshmallow / SDK 23) até Android 15 (SDK 35).
+            - **Pacote**: `br.org.ibpj.mobile`
+          draft: false
+          prerelease: false
+          files: |
+            IBPJ-Mobile-release.apk
+            IBPJ-Mobile-v1.0.0-release.apk
+            IBPJ-Mobile-v1.0.0-debug.apk
+            qrcode-ibpj-mobile.png
+            qrcode-ibpj-mobile.svg
+
+  deploy-download-page:
+    name: Publicar Landing Page de Download no GitHub Pages
+    runs-on: ubuntu-latest
+    needs: publish-apk-release
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empacotar Landing Page de Download (docs/)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+
+      - name: Deploy no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

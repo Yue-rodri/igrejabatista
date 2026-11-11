@@ -1,0 +1,43 @@
+{
+  "name": "ibpj-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "npx prisma generate",
+    "db:deploy": "npx prisma migrate deploy",
+    "deploy:release": "npx prisma generate && npx prisma migrate deploy && node prisma/seed.js",
+    "qr:generate": "node scripts/generate-qrcode.js",
+    "tunnel": "node scripts/tunnel.js",
+    "start:tunnel": "node scripts/tunnel.js --with-api",
+    "tunnel:all": "node scripts/tunnel.js --with-api --with-frontend",
+    "tunnel:lt": "npx localtunnel --port 4000",
+    "tunnel:cf": "npx cloudflared tunnel --url http://localhost:4000",
+    "db:migrate": "dotenv -e .env -- npx prisma migrate dev --name init_models",
+    "db:generate": "dotenv -e .env -- npx prisma generate",
+    "seed": "dotenv -e .env -- node prisma/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.18.0",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "localtunnel": "^2.0.2",
+    "multer": "^2.0.2",
+    "prisma": "^6.18.0",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^11.0.0",
+    "nodemon": "^3.1.10"
+  }
+}

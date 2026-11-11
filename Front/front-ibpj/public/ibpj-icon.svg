@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#07152D" />
+      <stop offset="50%" stop-color="#001B30" />
+      <stop offset="100%" stop-color="#041022" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="96" y1="80" x2="416" y2="432" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F3D77D" />
+      <stop offset="45%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#B89416" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="48%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.26" />
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="116" fill="url(#bgGrad)" />
+  <circle cx="256" cy="220" r="210" fill="url(#glow)" />
+  <rect x="20" y="20" width="472" height="472" rx="98" stroke="url(#goldGrad)" stroke-opacity="0.32" stroke-width="4" />
+
+  <!-- Temple / Church Roof & Cross -->
+  <path d="M256 88V148M230 114H282" stroke="url(#goldGrad)" stroke-width="14" stroke-linecap="round" />
+  <path d="M138 228L256 146L374 228" stroke="url(#goldGrad)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M166 214V316H346V214" stroke="url(#goldGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85" />
+  <path d="M232 316V254C232 240.745 242.745 230 256 230C269.255 230 280 240.745 280 254V316" fill="url(#goldGrad)" fill-opacity="0.22" stroke="url(#goldGrad)" stroke-width="10" />
+
+  <!-- Stylized Ichthys / Fish Symbol of IBPJ -->
+  <path d="M150 374C198 334 274 334 334 374C274 414 198 414 150 374Z" stroke="url(#goldGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M326 368L368 344M326 380L368 404" stroke="url(#goldGrad)" stroke-width="12" stroke-linecap="round" />
+  <circle cx="192" cy="374" r="6" fill="#F3D77D" />
+</svg>

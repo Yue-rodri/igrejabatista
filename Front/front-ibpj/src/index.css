@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Tokens Oficiais IBPJ Mobile — Premium Glass Experience */
+    --ibpj-primary: #001B30;
+    --ibpj-deep-navy: #07152D;
+    --ibpj-gold: #D4AF37;
+    --ibpj-gold-secondary: #B89416;
+    --ibpj-white: #FFFFFF;
+
+    /* Tokens Compatíveis Shadcn / Radix UI */
+    --background: 206 100% 9.4%; /* #001B30 */
+    --foreground: 0 0% 98%;
+
+    --card: 218 73% 10.2%; /* #07152D */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 218 73% 10.2%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 46 65% 52%; /* #D4AF37 */
+    --primary-foreground: 206 100% 9.4%; /* #001B30 */
+
+    --secondary: 215 55% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 215 45% 15%;
+    --muted-foreground: 214 25% 72%;
+
+    --accent: 215 50% 18%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214 40% 24%;
+    --input: 214 45% 18%;
+    --ring: 46 65% 52%;
+    --radius: 0.875rem;
+
+    /* Safe Area Insets para Android & WebViews */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+  }
+
+  .dark {
+    --background: 206 100% 9.4%;
+    --foreground: 0 0% 98%;
+    --card: 218 73% 10.2%;
+    --card-foreground: 0 0% 98%;
+    --popover: 218 73% 10.2%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 46 65% 52%;
+    --primary-foreground: 206 100% 9.4%;
+    --secondary: 215 55% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 215 45% 15%;
+    --muted-foreground: 214 25% 72%;
+    --accent: 215 50% 18%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 40% 24%;
+    --input: 214 45% 18%;
+    --ring: 46 65% 52%;
+  }
+
+  * {
+    @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #001B30;
+    color: #FFFFFF;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-foreground bg-[#001B30];
+    overscroll-behavior-y: none;
+    min-height: 100dvh;
+  }
+
+  /* Melhora legibilidade de inputs de data e hora em modo escuro Android */
+  input[type="date"],
+  input[type="time"] {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  /* Superfícies Glassmorphism Calibradas — IBPJ Mobile */
+  .ibpj-bg-canvas {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.13) 0%, transparent 42%),
+      radial-gradient(circle at 88% 22%, rgba(26, 75, 140, 0.22) 0%, transparent 48%),
+      linear-gradient(165deg, #07152D 0%, #001B30 52%, #051124 100%);
+  }
+
+  .glass-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.035) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    box-shadow: 0 8px 28px -6px rgba(0, 10, 24, 0.45);
+  }
+
+  .glass-card-solid {
+    background: linear-gradient(155deg, rgba(11, 30, 59, 0.92) 0%, rgba(7, 21, 45, 0.96) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px -6px rgba(0, 8, 20, 0.55);
+  }
+
+  .glass-card-gold {
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.19) 0%, rgba(184, 148, 22, 0.07) 65%, rgba(7, 21, 45, 0.85) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.34);
+    box-shadow: 0 10px 30px -8px rgba(212, 175, 55, 0.18);
+  }
+
+  .glass-header {
+    background: rgba(0, 27, 48, 0.84);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .glass-bottom-nav {
+    background: rgba(7, 21, 45, 0.92);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border-top: 1px solid rgba(255, 255, 255, 0.11);
+    box-shadow: 0 -8px 28px rgba(0, 8, 20, 0.55);
+  }
+
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #B89416 100%);
+    color: #001B30;
+    font-weight: 700;
+    box-shadow: 0 6px 20px -4px rgba(212, 175, 55, 0.4);
+    transition: transform 150ms ease, filter 150ms ease;
+  }
+
+  .btn-gold:active {
+    transform: scale(0.97);
+    filter: brightness(0.95);
+  }
+}
+
+/* Utilitários de Safe Area e Scrollbar oculta para carrosséis mobile */
+.pt-safe {
+  padding-top: var(--safe-top);
+}
+
+.pb-safe {
+  padding-bottom: var(--safe-bottom);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

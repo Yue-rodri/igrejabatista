@@ -1,0 +1,11 @@
+﻿node_modules/
+**/node_modules/
+Back/ibpj-api/.env
+Front/front-ibpj/dist/
+Front/front-ibpj/android/.gradle/
+Front/front-ibpj/android/build/
+Front/front-ibpj/android/app/build/
+Front/front-ibpj/android/capacitor-cordova-android-plugins/build/
+Front/front-ibpj/android/local.properties
+
+Back/ibpj-api/.tunnel-info.json
